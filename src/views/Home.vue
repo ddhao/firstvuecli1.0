@@ -8,10 +8,16 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
+import { getDog } from '@/api/index'
 export default defineComponent({
   name: 'Home',
   components: {
     HelloWorld
+  },
+  setup () {
+    getDog().then(res => {
+      console.log(res)
+    })
   }
 })
 </script>
