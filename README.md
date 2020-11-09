@@ -12,7 +12,9 @@ git clone https://github.com/ddhao/firstvuecli1.0.git
 克隆至本地后需要打开vue.config.js 按照提示自动导入全局css（主要是为了安装style-resources-loader）
 
 style-resources-loader > patterns
-require('path').resolve(__dirname, 'src/assets/base.css') 替换下方代码
+
+require('path').resolve(__dirname, 'src/assets/base.css') 
+替换下方代码
 'D:\\vue3.0\\firstvuecli1.0\\src\\assets\\base.css' 
 
 替换后执行 vue add style-resources-loader 然后随意选择一个css预处理器
