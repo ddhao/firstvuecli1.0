@@ -1,6 +1,22 @@
-// const path = require('path')
+/* eslint-disable */
+// 避免ts-eslint 检测 vue.config.ts不起作用只能用js文件 但是eslint检测却是ts的 只能关闭校验
+const path = require('path')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+/* eslint-enable */
 module.exports = {
+  // 自动导入全局css(全局变量、颜色、函数)
+  // 导入项目后，需要执行以下操作
+  // require('path').resolve(__dirname, 'src/assets/base.css')
+  // $ ~ vue add style-resources-loader
+  // preProcessor: 'postcss'
+  pluginOptions: {
+    'style-resources-loader': {
+      patterns: [
+        'D:\\vue3.0\\firstvuecli1.0\\src\\assets\\base.css'
+      ],
+      preProcessor: 'postcss'
+    }
+  },
   publicPath: process.env.NODE_ENV === 'production' ? '/home/' : '/', // 配置路径
   devServer: {
     port: '2612', // 设定端口名
@@ -32,7 +48,7 @@ module.exports = {
       })
     ],
     externals: {
-      'wx': 'jWeixin'
+      wx: 'jWeixin'
     }
   }
 }

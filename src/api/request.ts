@@ -1,15 +1,7 @@
 // 二次封装axios api请求拦截
 import axios, { AxiosInstance } from 'axios'
-
+import { ApiList, ParamData, ApiUrl } from './types'
 const BASE_NODE_BUILD: string = process.env.NODE_ENV
-
-interface ApiList {
-  api: {
-    dev: string;
-    test: string;
-    prod: string;
-  };
-}
 
 // 各个环境的api接口
 const apiObj: ApiList = {
@@ -47,10 +39,10 @@ service.interceptors.response.use(
   }
 )
 
-export function request (params: {url: string}) {
+export function request (params: ParamData) {
   if (params.url.indexOf('http') === -1) {
     // 当地址为本项目地址
-    const apiUrl: { [key: string]: string } = apiObj.api
+    const apiUrl: ApiUrl = apiObj.api
     params.url = apiUrl[BASE_NODE_BUILD] + params.url
   }
   return service(params)
